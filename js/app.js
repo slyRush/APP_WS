@@ -78,16 +78,14 @@ angular
         //$window.location.href = conf.site;
     }
 
-    /*$rootScope.userConnected = JSON.parse(strUserConnected);*/
-    /*$rootScope.header = {
+    $rootScope.userConnected = JSON.parse(strUserConnected);
+    $rootScope.header = {
         headers: {
             'Content-Type': 'application/json',
-            //'Access-Control-Allow-Origin' : '*',
-            //'Access-Control-Allow-Methods' : 'GET, POST, PUT, DELETE'
-            'token': $rootScope.userConnected.token,
-            'password': $rootScope.userConnected.user.password,
-            'login': $rootScope.userConnected.user.login
+            'Authorization': $rootScope.userConnected.data.apiKey,
+            //'password': $rootScope.userConnected.user.password,
+            //'login': $rootScope.userConnected.user.login
         }
-    }*/
+    }
 })
 ;
