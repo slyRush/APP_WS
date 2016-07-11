@@ -25,8 +25,8 @@ angular.module('common.services')
       closed: true,
       children : [
         {
-          name: 'task Manager',
-          url: '#/priseEnCharge'
+          name: 'Lists',
+          url: '#/tasks'
 
         }
 
