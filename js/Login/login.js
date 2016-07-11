@@ -39,8 +39,7 @@ MyApp.controller('LoginController', function (
                 password : $scope.password
             };
             crud.connexion(userAuth).then(function (d) {
-                console.log(d);
-                if (!d.data.error) {
+                if (d.data.result.state) {
                     var result = d.data;
                     var StrUserConnected = JSON.stringify(result);
                     sessionStorage.setItem("UserConnected", StrUserConnected);
@@ -56,5 +55,6 @@ MyApp.controller('LoginController', function (
                 $scope.progressbar.complete();
             });
         } 
-    }
+    };
+    
 });

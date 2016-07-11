@@ -13,11 +13,34 @@ angular
       'GlobalConfig'
   ]
 )
-.controller('MainCtrl', function ($scope, $window, conf) {
+.controller('MainCtrl', function ($scope, $window, conf, crud) {
     $scope.disconnect = function () {
         sessionStorage.removeItem("UserConnected");
         $window.location.href = conf.site+'login.html';
-    }
+    };
+
+
+    $scope.getAllTasks = function () {
+        //$scope.progressbar.start();
+        //$scope.Submitted = true;
+
+        crud.getTasks().then(function (d) {
+            console.log(d.data.records);
+            if (d.data.records.tasks != NULL) {
+                var result = d.data;
+                console.log(result);
+            }
+            else {
+                $scope.alerts.push({ msg: 'Tasks non chargés', type: 'warning' });
+                //$scope.progressbar.complete();
+            }
+        }, function (error) {
+            $scope.alerts.push({ msg: 'Une erreur est survenue', type: 'danger' });
+            //$scope.progressbar.complete();
+        });
+
+    };
+
 })
 .config(function ($routeProvider, $httpProvider) {
    var viewsFolder = "../views/";
@@ -81,11 +104,12 @@ angular
     $rootScope.userConnected = JSON.parse(strUserConnected);
     $rootScope.header = {
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': $rootScope.userConnected.data.apiKey,
+            'Authorization': 'f007baa2f665ef4c67c782df79ad1d93'//$rootScope.userConnected.records.apiKey
             //'password': $rootScope.userConnected.user.password,
             //'login': $rootScope.userConnected.user.login
         }
     }
+
+
 })
 ;
