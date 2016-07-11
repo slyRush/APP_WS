@@ -16,7 +16,7 @@ angular
 .controller('MainCtrl', function ($scope, $window, conf) {
     $scope.disconnect = function () {
         sessionStorage.removeItem("UserConnected");
-        $window.location.href = conf.site+'/login.html';
+        $window.location.href = conf.site+'login.html';
     }
 })
 .config(function ($routeProvider, $httpProvider) {

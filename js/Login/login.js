@@ -19,7 +19,7 @@ MyApp.controller('LoginController', function (
 
     var userConnected = sessionStorage.getItem("UserConnected");
     if (userConnected != null) {
-        $window.location.href = conf.site+'Home/Index';
+        $window.location.href = conf.site+'index.html';
     }
 
     $scope.closeAlert = function (index) {
