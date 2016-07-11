@@ -37,7 +37,7 @@ MyApp.controller('LoginController', function (
             var userAuth = {
                 email : $scope.login,
                 password : $scope.password
-            }
+            };
             crud.connexion(userAuth).then(function (d) {
                 console.log(d);
                 if (d.data.error) {
@@ -57,4 +57,4 @@ MyApp.controller('LoginController', function (
             });
         } 
     }
-})
+});

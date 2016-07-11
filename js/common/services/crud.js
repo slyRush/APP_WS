@@ -2,7 +2,16 @@ angular.module('common.services')
 .factory('crud', function ($http,conf,$rootScope) {
   var fac = {};
   fac.connexion = function (userAuth) {
-    return $http.post(url = conf.entryPoint.trim() + 'login', userAuth, { headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Access-Control-Allow-Origin' : 'http://10.2.150.239/fap_training/v1/'} });
+    //return $http.post(conf.entryPoint.trim() + 'login', userAuth, { headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Access-Control-Allow-Origin' : 'http://10.2.150.239/fap_training/v1/'} });
+    return $http.post(
+        conf.entryPoint.trim() + 'login',
+        userAuth,
+        {
+          headers: {
+            "withCredentials" : true
+          }
+        }
+    );
     //return $http.get(conf.entryPoint.trim() + 'OtherSolution/api.php/tasks?transform=1');
   };
   fac.get = function (ws, search, changeYear) {
