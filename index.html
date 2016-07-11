@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:800,600,700,400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/lib/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/lib/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/lib/css/ui-select.min.css" />
+    <link rel="stylesheet" href="assets/lib/css/selectize.default.css" />
+    <link rel="stylesheet" href="assets/lib/css/ngProgress.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body ng-app="myApp" ng-controller="MainCtrl">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+            <a ng-click="toggleSideBar()" class="menu">
+                <i class="glyphicon glyphicon-menu-hamburger"></i>
+            </a>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 logo">
+            <a href="#/">
+                <b>APP</b>WS
+
+            </a>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 disco">
+            <a href="" ng-click="disconnect()" class="disconect"><i class="fa fa-sign-out"></i>&nbsp;<span>Deconnexion</span></a>
+        </div>
+    </div>
+</div>
+<div class="page-container">
+    <div class="page-sidebar-wrapper">
+        <ul class="sections" auto-active>
+            <li ng-repeat="section in menu" class="section auto-active">
+                <a href="{{section.url}}" ng-if="section.children.length==undefined">
+                    <i class="{{section.ico}}"></i>
+                    <span>{{section.name}}</span>
+                </a>
+                <a ng-if="section.children.length>0" ng-click="setCollapse(menu, section)">
+                    <i class="{{section.ico}}"></i>
+                    <span>{{section.name}}</span>
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': section.closed, 'fa-angle-up': !section.closed}"></i>
+                </a>
+                <ul ng-if="section.children.length>0" uib-collapse="section.closed" class="pages">
+                    <li ng-repeat="page in section.children" class="page">
+                        <a href="{{page.url}}" ng-if="page.children.length==undefined">{{page.name}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div ng-view class="view"></div>
+        </div>
+    </div>
+</div>
+<div class="page-footer">
+    <div class="wrap-foot">
+        <div class="page-footer-inner col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <span>2016 -Tranining Angular </span>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 foot-logo">
+            <img title="" src="" alt="" />
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 last-foot">
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+</div>
+<script src="assets/lib/js/angular.min.js"></script>
+<script src="assets/lib/js/angular-route.min.js"></script>
+<!--script src="~/assets/lib/js/angular-animate.min.js"></script-->
+<script src="assets/lib/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
+<script src="assets/lib/js/ng-google-chart.min.js"></script>
+<script src="assets/lib/js/ui-select.min.js"></script>
+<script src="assets/lib/js/ngProgress.min.js"></script>
+<script src="Config/Config.js"></script>
+
+
+<script src="js/app.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/services/crud.js"></script>
+<script src="js/common/services/utils.js"></script>
+<script src="js/common/services/excelExport.js"></script>
+<script src="js/common/directives/autoActive.js"></script>
+<script src="js/common/services/menu.js"></script>
+<script src="js/common/filters/formatPercent.js"></script>
+<script src="js/common/filters/changeToMonthName.js"></script>
+<script src="js/common/filters/formatMonth.js"></script>
+<script src="js/common/filters/displaySearch.js"></script>
+<script src="js/home/home.js"></script>
+<script src="js/reporting/annuel.js"></script>
+<script src="js/reporting/mensuel.js"></script>
+<script src="js/kpi/traitement.js"></script>
+<script src="js/kpi/priseEnCharge.js"></script>
+
+<uib-alert class="uib-alert" dismiss-on-timeout="5000" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+</body>
+</html>
+

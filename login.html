@@ -1,0 +1,48 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WS :: APP</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:800,600,700,400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/lib/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/lib/css/ngProgress.css" />
+</head>
+<body ng-app="MyApp" ng-controller="LoginController" class="login">
+    <div class="header">
+        <span><b>WS</b> app</span>
+    </div>
+    <div class="background-cover">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <form class="form col-md-12 center-block well" name="loginForm">
+                <div class="form-group">
+                    <label for="userName">identifiant</label>
+                    <input class="form-control input-lg" ng-model="login" placeholder="Saisissez votre identifiant" type="text" name="userName" required>
+                </div>
+                <div class="form-group">
+                <label for="psw">mot de passe</label>
+                    <input class="form-control input-lg" ng-model="password" placeholder="Saisissez votre mot de passe" type="password" name="psw" required>
+                </div>
+                <div class="form-group pull-center">
+                    <button class="btn btn-primary" ng-click="connexion()" ng-disabled="loginForm.$invalid">SE CONNECTER</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    <script src="assets/lib/js/angular.min.js"></script>
+    <script src="assets/lib/js/ui-bootstrap-tpls-1.1.2.min.js"></script>
+    <script src="assets/lib/js/ngProgress.min.js"></script>
+    <script src="js/Login/login.js"></script>
+    <script src="js/common/common.js"></script>
+    <script src="js/common/services/crud.js"></script>
+    <script src="Config/Config.js"></script>
+    <uib-alert class="uib-alert" dismiss-on-timeout="5000" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert> 
+
+</body>
+</html>
