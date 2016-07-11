@@ -1,5 +1,5 @@
 angular.module('common.modules')
-.controller('annuel', function($scope, $rootScope, crud, utils, ngProgressFactory, $filter, Excel, $timeout) { 
+.controller('annuel', function($scope, $rootScope, crud, utils, ngProgressFactory, $filter, Excel, $timeout) {
   $scope.progressbar = ngProgressFactory.createInstance();
   $scope.currentYear = utils.getCurrentYear();
   $scope.firstLoad = true;
