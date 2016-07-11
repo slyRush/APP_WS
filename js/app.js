@@ -25,16 +25,15 @@ angular
     $routeProvider
     //.when('/', { templateUrl: 'Home', controller: 'home' })
     .when('/annuel', { templateUrl: 'Annuel', controller: 'annuel' })
-    .when('/mensuel', { templateUrl: 'Mensuel', controller: 'mensuel' })
-    .when('/priseEnCharge', { templateUrl: 'PriseEnCharge', controller: 'priseEnCharge' })
-    .when('/traitement', { templateUrl: 'Traitement', controller: 'traitement' })
+    //.when('/mensuel', { templateUrl: 'Mensuel', controller: 'mensuel' })
+    //.when('/priseEnCharge', { templateUrl: 'PriseEnCharge', controller: 'priseEnCharge' })
+    //.when('/traitement', { templateUrl: 'Traitement', controller: 'traitement' })
 
     .otherwise({ redirectTo: '/annuel' });
 
-    $httpProvider.defaults.useXDomain = true;
-
-    //$httpProvider.defaults.withCredentials = true;
-    //delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    //Enable cross domain calls
+    //$httpProvider.defaults.useXDomain = true;
+    //$http.useXDomain = true;
 })
 .run(function ($rootScope, menu, $window) {
     $rootScope.$on("$routeChangeSuccess", function (event, data) {
@@ -58,7 +57,7 @@ angular
         var itemClosed = item.closed;
         angular.forEach(data, function (d) {
             d.closed = true;
-        })
+        });
         item.closed = !itemClosed;
     };
 

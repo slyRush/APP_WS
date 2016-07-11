@@ -7,8 +7,9 @@ angular.module('common.services')
         conf.entryPoint.trim() + 'login',
         userAuth,
         {
+          //withCredentials : true,
           headers: {
-            "withCredentials" : true
+
           }
         }
     );

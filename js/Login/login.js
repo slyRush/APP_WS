@@ -35,17 +35,17 @@ MyApp.controller('LoginController', function (
         $scope.Submitted = true;
         if ($scope.IsFormValid) {
             var userAuth = {
-                email : $scope.login,
+                email : $scope.login ,
                 password : $scope.password
             };
             crud.connexion(userAuth).then(function (d) {
                 console.log(d);
-                if (d.data.error) {
+                if (!d.data.error) {
                     var result = d.data;
                     var StrUserConnected = JSON.stringify(result);
                     sessionStorage.setItem("UserConnected", StrUserConnected);
                     $scope.progressbar.complete();
-                    '$window.location.href = conf.site+'/index.html;
+                    $window.location.href = conf.site + 'index.html';
                 }
                 else {
                     $scope.alerts.push({ msg: 'Merci de vérifier votre login et mot de passe', type: 'warning' });
