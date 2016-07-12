@@ -12,10 +12,6 @@ angular.module('common.services')
     return $http.get(conf.entryPoint.trim() + ws +'/?year=' + search.annee + '&month=' + search.month + '&marque=' + search.marque + '&code_plaque=' + plaque + '&code_site=' + site + '&metier=' + search.metier + '&changeYear=' + changeYear, $rootScope.header);
   };
 
-  fac.getTasks = function() {
-    return $http.get(conf.entryPoint.trim() + 'tasks', $rootScope.header)
-  };
-
   fac.selectPlaque = function (plaque) {
     var plaque = plaque.split(' - ')[0];
     return $http.get(conf.entryPoint.trim() + 'Plaque/?plaque='+plaque, $rootScope.header);
