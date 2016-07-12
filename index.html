@@ -50,17 +50,19 @@
                 </ul>
             </li>
             <li>
-                <button ng-click="getAllTasks()" value="Tous les tasks"> Tous les tasks</button>
+                <a href="#/tasks">
+                    <span>All task</span>
+                </a>
             </li>
-            <li>
-                {{userConnected}}
-            </li>
+
+
         </ul>
     </div>
     <div class="page-content-wrapper">
         <div class="page-content">
             <div ng-view class="view"></div>
         </div>
+
     </div>
 </div>
 <div class="page-footer">
@@ -99,6 +101,8 @@
 <script src="js/common/filters/changeToMonthName.js"></script>
 <script src="js/common/filters/formatMonth.js"></script>
 <script src="js/common/filters/displaySearch.js"></script>
+<script src="js/common/services/task.js"></script>
+<script src="js/Task/task.controller.js"></script>
 <!--<script src="js/home/home.js"></script>
 <script src="js/reporting/annuel.js"></script>
 <script src="js/reporting/mensuel.js"></script>

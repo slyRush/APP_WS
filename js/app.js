@@ -1,4 +1,4 @@
-angular
+var app = angular
 .module('myApp',
   [
       'ngRoute',
@@ -13,6 +13,7 @@ angular
       'GlobalConfig'
   ]
 )
+
 .controller('MainCtrl', function ($scope, $window, conf, crud) {
     $scope.disconnect = function () {
         sessionStorage.removeItem("UserConnected");
@@ -31,7 +32,7 @@ angular
                 console.log(result);
             }
             else {
-                $scope.alerts.push({ msg: 'Tasks non chargés', type: 'warning' });
+                $scope.alerts.push({ msg: 'Tasks non chargÃ©s', type: 'warning' });
                 //$scope.progressbar.complete();
             }
         }, function (error) {
@@ -51,8 +52,9 @@ angular
     //.when('/mensuel', { templateUrl: 'Mensuel', controller: 'mensuel' })
     //.when('/priseEnCharge', { templateUrl: 'PriseEnCharge', controller: 'priseEnCharge' })
     //.when('/traitement', { templateUrl: 'Traitement', controller: 'traitement' })
+    .when('/tasks', {templateUrl:'task.view.html', cotroller : 'taskController'})
 
-    .otherwise({ redirectTo: '/annuel' });
+    .otherwise({ redirectTo: '/login.html' });
 
     //Enable cross domain calls
     //$httpProvider.defaults.useXDomain = true;
@@ -104,7 +106,7 @@ angular
     $rootScope.userConnected = JSON.parse(strUserConnected);
     $rootScope.header = {
         headers: {
-            'Authorization': 'f007baa2f665ef4c67c782df79ad1d93'//$rootScope.userConnected.records.apiKey
+            'Authorization': $rootScope.userConnected.records.apiKey
             //'password': $rootScope.userConnected.user.password,
             //'login': $rootScope.userConnected.user.login
         }
