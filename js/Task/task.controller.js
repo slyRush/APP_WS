@@ -13,4 +13,16 @@ app.controller('taskController',function ($scope,taskFactory) {
         $scope.alerts.push({ msg: 'Une erreur est survenue', type: 'danger' });
     });
 
+    $scope.deleteTask = function(id){
+
+        taskFactory.deleteTask(id).then(
+            function(d){
+                $scope.alerts.push({ msg: 'supprimer avec succes', type: 'success' });
+            },function(erroor){
+                $scope.alerts.push({ msg: 'Une erreur est survenue', type: 'danger' });
+            }
+        )
+    }
+
+
 })
