@@ -3,6 +3,6 @@
         <h1>{{onetask.id}}->{{onetask.task}}</h1>
         <i>status {{onetask.status}}</i><br>
         <i>date de cr&eacute;ation {{onetask.createdAt}}</i>
-        <button ng-click="deleteTask(onetask.id)">Supprimer</button>
+        <button ng-click="deleteTask($index)">Supprimer</button>
     </div>
 </div>
