@@ -21,7 +21,7 @@ angular.module('common.services')
             return deferred.promise;
         };
         factory.deleteTask=function(idToDelete){
-            return $http.delete(conf.entryPoint.trim()+'tasks/'+idToDelete);
+            return $http.delete(conf.entryPoint.trim()+'tasks/'+idToDelete, $rootScope.header);
         }
 
         return factory;
