@@ -53,6 +53,7 @@ var app = angular
     //.when('/priseEnCharge', { templateUrl: 'PriseEnCharge', controller: 'priseEnCharge' })
     //.when('/traitement', { templateUrl: 'Traitement', controller: 'traitement' })
     .when('/tasks', {templateUrl:'task.view.html', cotroller : 'taskController'})
+    .when('/tasks/create', {templateUrl:'Task/task.view.html', cotroller : 'taskController'})
 
     .otherwise({ redirectTo: '/login.html' });
 

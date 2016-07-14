@@ -26,5 +26,17 @@ app.controller('taskController',function ($scope,taskFactory) {
         )
     }
 
+    $scope.create = function(){
+        ontask =$scope.taskName ;
+        $scope.progressbar.start();
+        taskFactory.createTask(onetask).then(
+          function(d){
+                $scope.alerts.push({ msg: 'ajouter avec succes', type: 'success' });
+          },function(erroor){
+                $scope.alerts.push({ msg: 'Une erreur est survenue', type: 'danger' });
+            }
+        );
+    }
+
 
 })
