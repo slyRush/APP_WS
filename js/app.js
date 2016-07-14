@@ -13,7 +13,6 @@ var app = angular
       'GlobalConfig'
   ]
 )
-
 .controller('MainCtrl', function ($scope, $window, conf, crud) {
     $scope.disconnect = function () {
         sessionStorage.removeItem("UserConnected");
@@ -87,8 +86,8 @@ var app = angular
     };
 
     $rootScope.toggleSideBar = function () {
-        var pageContent = angular.element(document.getElementsByClassName("page-content"));      
-        
+        var pageContent = angular.element(document.getElementsByClassName("page-content"));
+
         if(pageContent.hasClass('toggled')) {
             pageContent.removeClass('toggled');
             $rootScope.isMenuOpen = true;
